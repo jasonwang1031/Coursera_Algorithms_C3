@@ -6,16 +6,13 @@ def import_file(filename):
     file = open(filename)
     weight_list = [int(x) for x in file.readlines()]
 
-#def get_maxweight_list(weight_list):
- #   mw_list = []
-    # maximum-weight independent set of one vertex is its own weight
     mw_list.append(weight_list[0])
-    # maximum-weight independent set of two connected vertices is the higher one
+    # maximum weight of MWIS at 1
     mw_list.append(max(weight_list[0], weight_list[1]))
-
+    # maximum weight of MWIS at 2
+    i = 2
     # for all the rest of the vertices, find maximum-weight of the MWIS at each
     # position corresponding to the given weight_list
-    i = 2
     while i < len(weight_list):
         mw_list.append(max(mw_list[i - 1],
         mw_list[i - 2] + weight_list[i]))
